@@ -1,0 +1,40 @@
+<section class="container">
+  <div class="media mt-4 mb-4">
+    <img
+      src="<%- user.image %>"
+      class="mr-3 rounded-circle profileImageTweet"
+      alt="..."
+    />
+    <div class="media-body tweetContainer">
+      <h5 class="mt-0">
+        <span
+          ><a class="links" href="/<%=user.userName %>"
+            ><%= user.fullName %></a
+          ></span
+        >
+        <span class="text-muted">@<%= user.userName %></span>
+      </h5>
+
+      <p class="tweetFont"><%= tweets.content%></p>
+      <div class="tweetInfo">
+        <span><%= moment(tweets.date).format("DD/MM/YYYY - HH:mm:ss") %></span>
+        <span
+          ><a href="/like/<%= tweets._id%>"
+            ><i class="far fa-heart heart"></i
+          ></a>
+          <%= tweets.likes.length %></span
+        >
+        <% if (ownTweet) { %>
+        <span>
+          <a
+            class="delete"
+            href="/<%=user.userName %>/delete/<%= tweets._id %> "
+          >
+            <i class="far fa-trash-alt ml-2"></i></a
+        ></span>
+
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>

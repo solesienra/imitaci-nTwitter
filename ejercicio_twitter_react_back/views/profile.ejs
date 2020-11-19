@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body style="background-color: rgb(234, 242, 255)">
+    <%- include("./partials/navbar.ejs") %>
+    <div class="container">
+      <div class="shadow pr-5 pl-5 pb-5 feedContainer" style="background-color: rgb(255, 255, 255)">
+        <header>
+          <div class="card-body">
+            <div>
+              <img
+                class="profileImage rounded-circle media img-thumbnail"
+                src="<%- user.image %>"
+                alt=""
+              />
+            </div>
+            <h3 class="card-title"><%= user.fullName %></h5>
+            <h5 class="card-subtitle mb-2 text-muted">@<%= user.userName %></h5>
+            <p class="card-text tweetFont "><%- user.description %></p>
+            <div class="follows">
+              <span
+                ><a class="links" href="/<%=user.userName%>/followers"
+                  ><%= user.followers.length %> followers</a
+                ></span
+              >
+              <span class="following"
+                ><a class="links" href="/<%=user.userName%>/following" class=""
+                  ><%= user.following.length %> following</a
+                ></span
+              >
+              <a href="/<%=user.userName%>/follow">
+                <button class="tweetButton rounded-pill btn btn-primary mr-5">
+                  <% if(alreadyFollowing === true ){ %>
+                  Unfollow<%}else{%>Follow<%}%>
+                </button></a
+              >
+            </div>
+          </div>
+        </header>
+
+        <% for (let i = 0; i < user.tweets.length ; i++) { %>
+        <hr />
+        <%- include('./partials/tweet.ejs', {user, tweets: user.tweets[i]},
+        ownTweet) %> <% } %>
+      </div>
+    </div>
+    <footer><%- include('./partials/scripts.ejs'); %></footer>
+  </body>
+</html>

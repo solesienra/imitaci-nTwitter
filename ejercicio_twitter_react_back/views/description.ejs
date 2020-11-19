@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs'); %>
+  </head>
+  <body style="background-color: rgb(234, 242, 255)">
+    <%- include("./partials/navbar.ejs") %>
+    <div class="container">
+      <div
+        class="shadow pr-5 pl-5 pb-5 pt-5 d-flex justify-content-center align-items-center"
+        style="background-color: rgb(255, 255, 255)"
+      >
+        <div class="">
+          <form
+            action="/register/description"
+            method="POST"
+            enctype="multipart/form-data"
+            class=""
+            data-parsley-validate=""
+          >
+            <h2 class="text-center mb-5">Edit profile</h2>
+            <div class="form-row align-items-center">
+              <div class="col-sm-4 my-1">
+                <label class="sr-only" for="firstName"></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="firstName"
+                  id="firstName"
+                  value="<%= user.firstName %>"
+                  required=""
+                  data-parsley-required-message="Por favor ingrese un nombre"
+                />
+              </div>
+              <div class="col-sm-4 my-1">
+                <label class="sr-only" for="lastName"></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                  value="<%= user.lastName  %>"
+                  required=""
+                  data-parsley-required-message="Por favor ingrese un apellido"
+                />
+              </div>
+              <div class="col-sm-4 my-1">
+                <label class="sr-only" for="userName"></label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="userName"
+                    name="userName"
+                    required=""
+                    data-parsley-required-message="Por favor ingrese un nombre de usuario"
+                    value="<%= user.userName%>"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <h4 class="pt-3 pb-2">
+                <label for="description">Description</label>
+              </h4>
+              <textarea
+                class="form-control mb-3"
+                name="description"
+                id="description"
+                rows="5"
+                placeholder="Ingrese una descripcion"
+                data-parsley-required-message="Por favor ingrese una descripcion"
+                required=""
+                aria-describedby="helpId"
+              >
+<%=user.description%></textarea
+              >
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="pt-3 pb-2">
+                    <label for="imagen">Upload an image</label>
+                  </h4>
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    name="image"
+                    id="image"
+                    value="<%= user.image %>"
+                    placeholder=""
+                    aria-describedby="fileHelpId"
+                  />
+                  <small id="fileHelpId" class="form-text text-muted mb-5"
+                    >Inserte un archivo JPG o PNG</small
+                  >
+                </div>
+                <div class="col-sm-6">
+                  <button
+                    name=""
+                    id=""
+                    class="btn btn-primary rounded-pill p-2 tweetButton saveButton mt-sm-4"
+                    href=""
+                    type="submit"
+                    role="button"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/scripts.ejs'); %>
+  </body>
+</html>

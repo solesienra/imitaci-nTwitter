@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body style="background-color: rgb(234, 242, 255)">
+    <%- include("./partials/navbar.ejs") %>
+    <div class="container">
+      <div
+        class="shadow pr-5 pl-5 pb-5"
+        style="background-color: rgb(255, 255, 255)"
+      >
+        <div class="follow">
+          <h2>Followers</h2>
+          <ul class="list-unstyled">
+            <%user.followers.forEach((user) =>{%>
+            <hr />
+            <div class="media mt-5 mb-5">
+              <img
+                src="<%- user.image %>"
+                class="mr-3 rounded-circle profileImageTweet"
+                alt="..."
+              />
+              <div class="media-body">
+                <h5 class="mt-0">
+                  <span
+                    ><a class="links" href="/<%=user.userName %>"
+                      ><%= user.fullName %></a
+                    ></span
+                  >
+                  <span class="text-muted">@<%= user.userName %></span>
+                </h5>
+                <%= user.description %>
+              </div>
+            </div>
+
+            <%}); %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer><%- include('./partials/scripts.ejs'); %></footer>
+  </body>
+</html>
